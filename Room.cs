@@ -2,16 +2,17 @@
 {
     public class Room
     {
-        private string description;
+        private string desc;
 
-        public Room(string description)
+        // make new room
+        public Room(string roomDescription)
         {
-            this.description = description;
+            desc = roomDescription;
         }
 
         public string GetDescription()
         {
-            return description;
+            return desc;
         }
     }
 }

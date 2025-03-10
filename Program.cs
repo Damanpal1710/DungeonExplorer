@@ -10,10 +10,18 @@ namespace DungeonExplorer
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
-            game.Start();
-            Console.WriteLine("Waiting for your Implementation");
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("*******************");
+            Console.WriteLine("* DUNGEON EXPLORER *");
+            Console.WriteLine("*******************");
+            Console.WriteLine("");
+
+            Game myGame = new Game();
+            
+            // start the game
+            myGame.Start();
+
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to close...");
             Console.ReadKey();
         }
     }
