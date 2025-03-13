@@ -1,17 +1,18 @@
 ﻿namespace DungeonExplorer
 {
-    public class Room
+public class Room
+{
+private string desc;
+
+    // make new room
+    public Room(string roomDescription)
     {
-        private string description;
-
-        public Room(string description)
-        {
-            this.description = description;
-        }
-
-        public string GetDescription()
-        {
-            return description;
-        }
+        desc = roomDescription;
     }
+
+    public string GetDescription()
+    {
+        return desc;
+    }
+}
 }

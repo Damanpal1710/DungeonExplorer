@@ -2,24 +2,39 @@
 
 namespace DungeonExplorer
 {
-    public class Player
+public class Player
+{
+// player properties
+public string Name { get; private set; }
+public int Health { get; private set; }
+    private List<string> items = new List<string>();
+
+    public Player(string playerName, int playerHealth)
     {
-        public string Name { get; private set; }
-        public int Health { get; private set; }
-        private List<string> inventory = new List<string>();
+        // set name and health
+        Name = playerName;
+        Health = playerHealth;
+    }
 
-        public Player(string name, int health) 
+    public void PickUpItem(string newItem)
+    {
+        // check if item exists
+        if (newItem != "")
         {
-            Name = name;
-            Health = health;
+            items.Add(newItem);
         }
-        public void PickUpItem(string item)
-        {
+    }
 
-        }
-        public string InventoryContents()
+    public string InventoryContents()
+    {
+        if (items.Count > 0)
         {
-            return string.Join(", ", inventory);
+            return string.Join(", ", items);
+        }
+        else
+        {
+            // no items
+            return "Nothing";
         }
     }
 }
