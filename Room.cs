@@ -1,9 +1,12 @@
-﻿namespace DungeonExplorer
+﻿using System.Collections.Generic;
+
+namespace DungeonExplorer
 {
 public class Room
 {
 private string desc;
 
+private List<Item> items = new List<Item>();
     // make new room
     public Room(string roomDescription)
     {
@@ -14,5 +17,8 @@ private string desc;
     {
         return desc;
     }
+    public void AddItem(Item item) => items.Add(item);
+    public void RemoveItem(Item item) => items.Remove(item);
+    public List<Item> GetItems() => items;
 }
 }

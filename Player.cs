@@ -1,40 +1,41 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
-public class Player
-{
-// player properties
-public string Name { get; private set; }
-public int Health { get; private set; }
-    private List<string> items = new List<string>();
-
-    public Player(string playerName, int playerHealth)
+    public class Player : Creature
     {
-        // set name and health
-        Name = playerName;
-        Health = playerHealth;
-    }
+        private Inventory inventory = new Inventory();
 
-    public void PickUpItem(string newItem)
-    {
-        // check if item exists
-        if (newItem != "")
+        public Player(string name, int health) : base(name, health)
         {
-            items.Add(newItem);
         }
-    }
 
-    public string InventoryContents()
-    {
-        if (items.Count > 0)
+        public void PickUpItem(Item item)
         {
-            return string.Join(", ", items);
+            inventory.AddItem(item);
         }
-        else
+
+        public string InventoryContents()
         {
-            // no items
-            return "Nothing";
+            return inventory.ListItems();
         }
+
+        public override void Attack(Creature target)
+        {
+            Console.WriteLine($"{Name} attacks {target.Name}.");
+            target.TakeDamage(10);
+        }
+
+        public override void Heal(int amount)
+        {
+            Health += amount;
+            Console.WriteLine($"{Name} healed by {amount} points.");
+        }
+        public List<Item> GetInventoryItems()
+        {
+            return inventory.GetItems();
+        }
+
     }
 }
